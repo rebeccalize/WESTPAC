@@ -18,14 +18,17 @@ import matplotlib
 from scipy.interpolate import spline
 
 
-#For days in each MJO phase, count the number of days on which the rainfall exceeded the 95th percentile of climatology for that day
+#For days in each BSISO phase, in extended summer (April - September),
+#count the number of days on which the rainfall exceeded the 95th percentile of climatology for that day
 #Convert this to the percentage of days on which the rainfall exceeded the 95th percentile of climatology for that day
 
-#We can then later plot the bias in probability i.e. the probability in this MJO phase - 5% (the climatological probability of exceeding the 95th percentile is 5%)
-#To see whether the probability is increased or decreased during each phase of the MJO, of having extreme rainfall 
+#The 95th percentile is calculated monthly, across all years from 2001 - 2019 (e.g. the 95th percentile of all days in April across all years)
 
-#This version uses the 95th percentile that is calculated across the whole year (rather than the 95th percentile for a given day across all years)
-#And all values below 1mm of rainfall were removed before calculating the 95th percentile
+#We can then later plot the bias in probability compared to climatology i.e. the climatological probability of rainfall is 5%, how different is the probability
+#if you're in a certain phase of the BSISO?
+
+#Produces one text file per BSISO phase containing the probability (0-100%) of rainfall exceeding the 95th percentile
+
 
 IMERG_DIR = "/gws/nopw/j04/klingaman/emerton/GPM-IMERG/"
 
@@ -74,12 +77,10 @@ ffBSISO.close()
 
 
 
-years = [2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019] #,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018
+years = [2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019] 
 
 	
-for BSISO in [8]: #1,2,3,4,5,6,7,8
-
-	#print MJOdates
+for BSISO in [1,2,3,4,5,6,7,8]: #1,2,3,4,5,6,7,8
 	
 	#array to hold the total number of days in this MJO phase, at each gridpoint, that had rainfall exceeding the 95th percentile of climatology
 	no_days_exceeding_pctl = np.zeros((1440,400))
