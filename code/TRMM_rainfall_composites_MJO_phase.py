@@ -1,12 +1,7 @@
 import sys
-#sys.path.append('/usr/lib/python2.7/site-packages/mpl_toolkits/')
-#sys.path.append('/usr/lib/python2.7/site-packages/')
 import fnmatch
 import os
 import matplotlib.pyplot as plt
-#from mpl_toolkits.basemap import Basemap, cm
-#import mpl_toolkits
-#mpl_toolkits.__path__.append('/usr/lib/python2.7/site-packages/mpl_toolkits/')
 from mpl_toolkits.basemap import Basemap,cm
 import matplotlib.cm as cm
 import numpy as np
@@ -16,6 +11,10 @@ import datetime
 import matplotlib.path as mpath
 import matplotlib
 from scipy.interpolate import spline
+
+#This script produces the mean daily rainfall, and total daily rainfall, using TRMM, for each phase of the MJO (amplitude >= 1)
+#The ONI stuff at the start is, I think, when I started to look at ENSO-MJO combinations, but changed the methodology and also started to use IMERG instead of TRMM
+#So this stuff isn't actually used... 
 
 
 TRMM_DIR = "/gws/nopw/j04/klingaman/datasets/TRMM_3B42/V7_NC_daily/"
